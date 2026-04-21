@@ -68,17 +68,30 @@ sudo apt update && sudo apt install -y \
 ```
 ### Terminal 2 — Điều Khiển ARM
 
-**Cách 1:** Gửi lệnh trực tiếp (1 lần)
 
-```bash
-ros2 topic pub --once /arm_controller/commands std_msgs/msg/Float64MultiArray "{data: [-0.07, 1.0]}"
-```
-
-**Cách 2:** Điều khiển tăng dần (khuyến nghị)
+**Cách 1:** Điều khiển tăng dần (khuyến nghị)
 
 ```bash
 ros2 run finalexam_ros arm_incremental_teleop
 ```
+**1. Khớp xoay (Khớp 2)**
+Sử dụng các phím số và ký tự đặc biệt tương ứng để thay đổi góc xoay:
+
+| Tăng (+ ) | Giảm (-) | Giá trị thay đổi |
+| :--- | :--- | :--- |
+| `1` | `!` (Shift + 1) | **± 10°** |
+| `2` | `@` (Shift + 2) | **± 20°** |
+| `5` | `%` (Shift + 5) | **± 5°** |
+
+**2. Khớp tịnh tiến (Khớp 1)**
+Sử dụng các dấu câu để thay đổi cao độ của cánh tay:
+
+* `.` (Dấu chấm): **Nâng lên +0.05m**
+* `,` (Dấu phẩy): **Hạ xuống -0.05m**
+
+**3. Các phím chức năng khác**
+* `R`: Reset toàn bộ hệ thống về trạng thái mặc định `[0, 0]`.
+* `CTRL + C`: Thoát chương trình điều khiển.
 
 ---
 

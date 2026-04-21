@@ -12,7 +12,7 @@ def generate_launch_description():
 
     # ĐỊNH NGHĨA ĐƯỜNG DẪN RVIZ (Bạn thiếu dòng này nên bị báo lỗi)
     rviz_config_path = os.path.join(pkg_share, 'config', 'view_robot.rviz')
-
+    controller_config = os.path.join(pkg_share, 'config', 'controllers.yaml')
     # Thiết lập đường dẫn Model cho Gazebo
     gazebo_model_path = SetEnvironmentVariable(
         name='GAZEBO_MODEL_PATH',
@@ -35,12 +35,18 @@ def generate_launch_description():
     return LaunchDescription([
         gazebo_model_path,
         world_file_arg,
-
+        Node(
+                package='robot_state_publisher',
+                executable='robot_state_publisher',
+                parameters=[{'robot_description': robot_desc, 'use_sim_time': True}],
+                output='screen'
+            ),
         # 1. Chạy Gazebo Server
         ExecuteProcess(
             cmd=['gzserver', '--verbose', LaunchConfiguration('world'),
                  '-s', 'libgazebo_ros_init.so',
-                 '-s', 'libgazebo_ros_factory.so'],
+                 '-s', 'libgazebo_ros_factory.so',
+                 '--ros-args', '--params-file', controller_config],
             output='screen'
         ),
 
@@ -49,12 +55,6 @@ def generate_launch_description():
 
         # 3. Nạp Robot State Publisher & RViz & Spawn (Sau 5s)
         TimerAction(period=5.0, actions=[
-            Node(
-                package='robot_state_publisher',
-                executable='robot_state_publisher',
-                parameters=[{'robot_description': robot_desc, 'use_sim_time': True}],
-                output='screen'
-            ),
             Node(
                 package='gazebo_ros',
                 executable='spawn_entity.py',

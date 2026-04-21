@@ -20,14 +20,14 @@ setup(
         # URDF files
         (os.path.join('share', package_name, 'urdf'),
             glob(os.path.join('urdf', '*.urdf'))),  # SỬA: chỉ lấy .urdf, tránh lấy nhầm file khác
+        
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
         # Meshes — SỬA: thêm recursive để lấy file trong subfolder nếu có
         (os.path.join('share', package_name, 'meshes'),
             glob(os.path.join('meshes', '*.STL')) +
-            glob(os.path.join('meshes', '*.stl')) +
             glob(os.path.join('meshes', '*.dae'))),
-        (os.path.join('share', package_name, 'config'), 
-         glob(os.path.join('config', '*.yaml')) + glob(os.path.join('config', '*.rviz'))),
+        (os.path.join('share', package_name, 'config'),
+        glob(os.path.join('config', '*.yaml'))),
         (os.path.join('lib', package_name), ['finalexam_ros/arm_incremental_teleop.py']),
     ],
     install_requires=['setuptools'],

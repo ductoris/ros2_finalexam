@@ -393,7 +393,6 @@
 
   <gazebo>
     <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-      <parameters>/home/ductri/ros2_ws/src/finalexam_ros/config/controllers.yaml</parameters>
     </plugin>
   </gazebo>
 

@@ -1,0 +1,24 @@
+Hành động	            Phím thường	          Phím + Shift
+Tiến / Lùi	             i /,        |	        I / 
+Xoay Trái / Phải	       j / l	    |           -
+Đi NGANG Trái	               -	    |         Shift + J
+Đi NGANG Phải	            -	        |         Shift + L
+Dừng lại	                k         |	          K
+dieu khien banh xe: 
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/mecanum_drive_controller/reference_unstamped
+Dieu khien ARM:
+C1: ros2 topic pub --once /arm_controller/commands std_msgs/msg/Float64MultiArray "{data: [-0.07, 1.0]}"
+C2: ros2 run finalexam_ros arm_incremental_teleop
+-------
+Thu tu chay:
+cd ~/ro2_ws
+colcon build --packages-select finalexam_ros
+ros2 launch finalexam_ros gazebo.launch.py #terminal 1
+#Terminal 2: dieu khien arm
+ros2 run finalexam_ros arm_incremental_teleop
+#Terminal 3: dieu khien banh xe
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/mecanum_drive_controller/reference_unstamped
+#Terminal 4: hien thi Encoder
+ros2 topic echo /joint_states
+#Terminal 5: hien thi IMU
+ros2 topic echo /imu

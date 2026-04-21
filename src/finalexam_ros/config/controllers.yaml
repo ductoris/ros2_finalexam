@@ -1,0 +1,48 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 50
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    mecanum_drive_controller:
+      type: mecanum_drive_controller/MecanumDriveController
+    arm_controller:
+      type: position_controllers/JointGroupPositionController
+
+mecanum_drive_controller:
+  ros__parameters:
+
+    # ✅ PHẢI dùng command_joint_name
+    front_left_wheel_command_joint_name: Frontleft
+    front_right_wheel_command_joint_name: Frontright
+    rear_left_wheel_command_joint_name: Backleft
+    rear_right_wheel_command_joint_name: Backright
+
+    # Thông số động học
+    kinematics:
+      wheels_radius: 0.05
+      wheel_separation_x: 0.30
+      wheel_separation_y: 0.24
+
+    base_frame_id: base_link
+    odom_frame_id: odom
+    enable_odom_tf: true
+
+    use_stamped_vel: false
+
+    publish_rate: 50.0
+    
+    # Sai số (nếu muốn mô phỏng thực tế hơn)
+    linear_velocity_precision: 3
+    angular_velocity_precision: 3
+arm_controller: 
+  ros__parameters:
+    joints:
+      - Joint1
+      - Joint2
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity

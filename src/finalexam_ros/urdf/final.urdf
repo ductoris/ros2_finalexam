@@ -1,0 +1,415 @@
+<?xml version="1.0"?>
+<robot name="finalexam_ros">
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="4.60613173636493E-05 -5.48293926705412E-06 -0.0455994153912339" rpy="0 0 0" />
+      <mass value="3.07925886782748" />
+      <inertia ixx="0.0182612787332782" ixy="4.38402725811977E-09" ixz="7.40473162008238E-07" iyy="0.0388954755485699" iyz="2.46848881765906E-07" izz="0.0521757181959699" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://finalexam_ros/meshes/base_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.02" rpy="0 0 0" />
+      <geometry>
+        <box size="0.30 0.14 0.08" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="back_right">
+    <inertial>
+      <origin xyz="-1.67630940679508E-05 0.0187510063255215 -7.16149980251046E-06" rpy="0 0 0" />
+      <mass value="0.144485937463161" />
+      <inertia ixx="4.00827800129865E-05" ixy="4.46642384261894E-11" ixz="-2.70611065491029E-10" iyy="6.17257618808325E-05" iyz="8.90635847424176E-09" izz="4.0070713306064E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry><mesh filename="package://finalexam_ros/meshes/back_right.STL" /></geometry>
+      <material name=""><color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0.019 0" rpy="1.5708 0 0" />
+      <geometry><cylinder radius="0.05" length="0.04" /></geometry>
+    </collision>
+  </link>
+  <joint name="Backright" type="continuous">
+    <origin xyz="-0.14986476224812 -0.119750309596582 -0.0500082781805382" rpy="0 0 0" />
+    <parent link="base_link" /><child link="back_right" />
+    <axis xyz="0 -1 0" /> <limit effort="1000" velocity="25" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+  <link name="back_left">
+    <inertial>
+      <origin xyz="-3.39557239761867E-05 -0.0188726902692292 -8.36398948255157E-05" rpy="0 0 0" />
+      <mass value="0.145187835560938" />
+      <inertia ixx="4.00896149033657E-05" ixy="2.55957160672069E-10" ixz="8.70435351802457E-09" iyy="6.17369826623331E-05" iyz="-3.89988473797599E-11" izz="4.0102762059215E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry><mesh filename="package://finalexam_ros/meshes/back_left.STL" /></geometry>
+      <material name=""><color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.019 0" rpy="1.5708 0 0" />
+      <geometry><cylinder radius="0.05" length="0.04" /></geometry>
+    </collision>
+  </link>
+  <joint name="Backleft" type="continuous">
+    <origin xyz="-0.149911509223914 0.120249690403418 -0.0499105515525619" rpy="0 0 0" />
+    <parent link="base_link" /><child link="back_left" />
+    <axis xyz="0 -1 0" /> <limit effort="1000" velocity="25" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+  <link name="front_left">
+    <inertial>
+      <origin xyz="-6.80328921531421E-05 -0.0167510064700166 8.07998104851437E-06" rpy="0 0 0" />
+      <mass value="0.144485936513102" />
+      <inertia ixx="4.00815064397821E-05" ixy="-3.04651677116548E-09" ixz="-3.71818198356295E-09" iyy="6.17257625535643E-05" iyz="-8.36894560707643E-09" izz="4.00719869637442E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry><mesh filename="package://finalexam_ros/meshes/front_left.STL" /></geometry>
+      <material name=""><color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.017 0" rpy="1.5708 0 0" />
+      <geometry><cylinder radius="0.05" length="0.04" /></geometry>
+    </collision>
+  </link>
+  <joint name="Frontleft" type="continuous">
+    <origin xyz="0.150048677021618 0.118249690403418 -0.0499983612731708" rpy="0 0 0" />
+    <parent link="base_link" /><child link="front_left" />
+    <axis xyz="0 -1 0" /> <limit effort="1000" velocity="25" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+  <link name="front_right">
+    <inertial>
+      <origin xyz="-4.01276467762099E-06 0.0188726903120324 9.0180349112845E-05" rpy="0 0 0" />
+      <mass value="0.145187835558896" />
+      <inertia ixx="4.00855976097913E-05" ixy="-2.54242827598535E-10" ixz="-2.60989001776178E-09" iyy="6.17369826510031E-05" iyz="4.8932975675359E-11" izz="4.01067793273605E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry><mesh filename="package://finalexam_ros/meshes/front_right.STL" /></geometry>
+      <material name=""><color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0.019 0" rpy="1.5708 0 0" />
+      <geometry><cylinder radius="0.05" length="0.04" /></geometry>
+    </collision>
+  </link>
+  <joint name="Frontright" type="continuous">
+    <origin xyz="0.15005643750699 -0.119750309596582 -0.050096622662408" rpy="0 0 0" />
+    <parent link="base_link" /><child link="front_right" />
+    <axis xyz="0 -1 0" />
+    <limit effort="1000" velocity="25" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+  <link name="fix_arm">
+    <inertial>
+      <origin xyz="5.16407718889056E-05 0.000249690403418157 0.0272580512075361" rpy="0 0 0" />
+      <mass value="0.439295546431636" />
+      <inertia ixx="0.00124081698488693" ixy="4.90491967605696E-08" ixz="3.29766832418635E-19" iyy="0.00124982311483853" iyz="2.3715938386396E-19" izz="0.00101616739612817" />
+    </inertial>
+    <visual><geometry><mesh filename="package://finalexam_ros/meshes/fix_arm.STL" /></geometry></visual>
+    <collision><origin xyz="0 0 0.027" /><geometry><cylinder radius="0.04" length="0.06" /></geometry></collision>
+  </link>
+  <joint
+    name="Fixarm"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="fix_arm" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link
+    name="joint_1">
+    <inertial>
+      <origin
+        xyz="0.000304670881587754 0.0559437297110564 0.129999996094583"
+        rpy="0 0 0" />
+      <mass
+        value="0.0848039939096306" />
+      <inertia
+        ixx="0.000142384120242274"
+        ixy="-7.3199738064874E-07"
+        ixz="-5.98501563417493E-13"
+        iyy="7.97751875557315E-06"
+        iyz="1.85113127209417E-11"
+        izz="0.000142569533457675" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finalexam_ros/meshes/joint_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin
+        xyz="0 0 0.13"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.02" length="0.15" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint1"
+    type="prismatic">
+    <origin
+      xyz="5.16407718889056E-05 0.000249690403418268 0.02"
+      rpy="0 0 0" />
+    <parent
+      link="fix_arm" />
+    <child
+      link="joint_1" />
+    <axis
+      xyz="0 0 1" />
+
+    <limit
+      lower="-0.11"
+      upper="0"
+      effort="50"
+      velocity="0.5" />
+    <dynamics
+      damping="0.1"
+      friction="10" />
+  </joint>
+
+  <link
+    name="joint2">
+    <inertial>
+      <origin
+        xyz="0.0387153387889752 0.0154767804769137 -3.78737557859832E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0535021473177969" />
+      <inertia
+        ixx="9.01147443106383E-06"
+        ixy="-9.88211726822178E-06"
+        ixz="1.54054117281876E-20"
+        iyy="2.97812418465219E-05"
+        iyz="6.41892155341149E-21"
+        izz="3.35652509632372E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finalexam_ros/meshes/joint2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin
+        xyz="0.039 0.015 0"
+        rpy="0 1.5708 0" />
+      <geometry>
+        <cylinder radius="0.015" length="0.09" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint2"
+    type="revolute">
+    <origin
+      xyz="0.00072256707584864 0.132677524374381 0.130000000000001"
+      rpy="-1.57079632679489 0.666899498761747 1.56535034085449" />
+    <parent
+      link="joint_1" />
+    <child
+      link="joint2" />
+    <axis
+      xyz="0 0 -1" />
+
+    <limit
+      lower="0"
+      upper="2.0933"
+      effort="50"
+      velocity="1.0" />
+  </joint>
+
+  <link
+    name="end_effector">
+    <inertial>
+      <origin
+        xyz="0.00133295803156219 0.00136909483014924 -0.000418545179635688"
+        rpy="0 0 0" />
+      <mass
+        value="0.0515155952474648" />
+      <inertia
+        ixx="1.56449483279695E-05"
+        ixy="1.08955306970201E-06"
+        ixz="2.23401870692048E-07"
+        iyy="1.04579327240331E-05"
+        iyz="3.65061446789954E-06"
+        izz="1.37527997339835E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://finalexam_ros/meshes/end_effector.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin
+        xyz="0.001 0.001 0"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.03" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="EE"
+    type="fixed">
+    <origin
+      xyz="0.126708892956664 0.050652944727702 0"
+      rpy="0 -1.56535034085447 2.47469315482736" />
+    <parent
+      link="joint2" />
+    <child
+      link="end_effector" />
+    <axis
+      xyz="0 0 0" />
+    <dynamics
+      damping="0.1"
+      friction="10" />
+  </joint>
+  <link name="lidar">
+    <inertial><origin xyz="0.000649834734422927 -0.000432499745949111 0.0114242539296638" /><mass value="0.0120321695084395" /><inertia ixx="2.21429956225363E-06" ixy="-3.38754138037177E-08" ixz="-4.84627957222887E-09" iyy="2.13896956961368E-06" iyz="-4.18985401957555E-09" izz="3.87805432538668E-06" /></inertial>
+    <visual><geometry><mesh filename="package://finalexam_ros/meshes/lidar.STL" /></geometry></visual>
+    <collision><origin xyz="0 0 0.011" /><geometry><cylinder radius="0.025" length="0.025" /></geometry></collision>
+  </link>
+  <joint name="Lidar" type="fixed"><origin xyz="0.174303696818418 0.000603620603913058 0.00" /><parent link="base_link" /><child link="lidar" /></joint>
+
+  <link name="lidar_frame"><inertial><mass value="0.001"/><inertia ixx="0.00001" iyy="0.00001" izz="0.00001" ixy="0" ixz="0" iyz="0"/></inertial></link>
+  <joint name="lidar_to_frame" type="fixed"><parent link="lidar"/><child link="lidar_frame"/><origin xyz="0 0 0.03" rpy="0 0 0"/></joint>
+
+  <link name="imu">
+    <inertial><origin xyz="2.77555756156289E-17 0 -0.00148613416775453" /><mass value="0.00181256637061436" /><inertia ixx="6.14135305642494E-08" ixy="-3.47123277975075E-23" ixz="-3.39167614982162E-25" iyy="1.36413530564249E-07" iyz="3.46710163602183E-25" izz="1.95025132741229E-07" /></inertial>
+    <visual><geometry><mesh filename="package://finalexam_ros/meshes/imu.STL" /></geometry></visual>
+    <collision><origin xyz="0 0 -0.0015" /><geometry><box size="0.02 0.01 0.003" /></geometry></collision>
+  </link>
+  <joint name="IMU" type="fixed"><origin xyz="5.16407718888501E-05 -0.00020835506176925 -0.08" /><parent link="base_link" /><child link="imu" /></joint>
+
+  <gazebo reference="lidar_frame">
+    <sensor name="lidar" type="ray">
+      <pose>0 0 0 0 0 0</pose><always_on>true</always_on><update_rate>10</update_rate><visualize>true</visualize>
+      <ray><scan><horizontal><samples>180</samples><resolution>1</resolution><min_angle>-2.0933</min_angle><max_angle>2.0933</max_angle></horizontal></scan><range><min>0.1</min><max>10.0</max><resolution>0.01</resolution></range><noise><type>gaussian</type><mean>0.0</mean><stddev>0.01</stddev></noise></ray>
+      <plugin name="gazebo_ros_ray_sensor" filename="libgazebo_ros_ray_sensor.so"><ros><remapping>~/out:=scan</remapping></ros><output_type>sensor_msgs/LaserScan</output_type><frame_name>lidar_frame</frame_name></plugin>
+    </sensor>
+  </gazebo>
+
+<gazebo reference="front_left">
+  <mu1>2.0</mu1>
+  <mu2>0.1</mu2>
+  <fdir1>1 1 0</fdir1>
+</gazebo>
+
+<gazebo reference="back_right">
+  <mu1>2.0</mu1>
+  <mu2>0.1</mu2>
+  <fdir1>1 1 0</fdir1>
+</gazebo>
+
+<gazebo reference="front_right">
+  <mu1>2.0</mu1>
+  <mu2>0.1</mu2>
+  <fdir1>1 -1 0</fdir1>
+</gazebo>
+
+<gazebo reference="back_left">
+  <mu1>2.0</mu1>
+  <mu2>0.1</mu2>
+  <fdir1>1 -1 0</fdir1>
+</gazebo>
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware><plugin>gazebo_ros2_control/GazeboSystem</plugin></hardware>
+    <joint name="Backright"><command_interface name="velocity"><param name="min">-25</param><param name="max">25</param></command_interface><state_interface name="position"/><state_interface name="velocity"/></joint>
+    <joint name="Backleft"><command_interface name="velocity"><param name="min">-25</param><param name="max">25</param></command_interface><state_interface name="position"/><state_interface name="velocity"/></joint>
+    <joint name="Frontleft"><command_interface name="velocity"><param name="min">-25</param><param name="max">25</param></command_interface><state_interface name="position"/><state_interface name="velocity"/></joint>
+    <joint name="Frontright"><command_interface name="velocity"><param name="min">-25</param><param name="max">25</param></command_interface><state_interface name="position"/><state_interface name="velocity"/></joint>
+    <joint name="Joint1">
+    <command_interface name="position">
+      <param name="min">-0.11</param>
+      <param name="max">0.0</param>
+    </command_interface>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="Joint2">
+    <command_interface name="position">
+      <param name="min">0.0</param>
+      <param name="max">2.0933</param>
+    </command_interface>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+    <state_interface name="effort"/>
+  </joint>
+  </ros2_control>
+
+  <gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+      <parameters>/home/ductri/ros2_ws/src/finalexam_ros/config/controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="imu">
+  <sensor name="imu_sensor" type="imu">
+    <always_on>true</always_on>
+    <update_rate>100</update_rate>
+    <visualize>true</visualize>
+    <plugin name="gazebo_ros_imu" filename="libgazebo_ros_imu_sensor.so">
+      <ros>
+        <remapping>~/out:=imu</remapping>
+      </ros>
+      <initial_orientation_as_reference>false</initial_orientation_as_reference>
+      <frame_name>imu</frame_name>
+    </plugin>
+  </sensor>
+</gazebo>
+
+</robot>

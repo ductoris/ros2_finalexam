@@ -397,10 +397,14 @@ sua duong dan nay - o dong 402: "/home/ductri/ros2_ws"/src/finalexam_ros/config/
 tro dung den config cua ban
 <--->
 
-  <gazebo>
+<gazebo>
+
     <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-     <parameters>/home/ductri/ros2_ws/src/finalexam_ros/config/controllers.yaml</parameters>
+
+      <parameters>$(find finalexam_ros)/config/controllers.yaml</parameters>
+
     </plugin>
+
   </gazebo>
 
   <gazebo reference="imu">

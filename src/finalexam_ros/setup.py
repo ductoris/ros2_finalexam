@@ -26,8 +26,8 @@ setup(
             glob(os.path.join('meshes', '*.STL')) +
             glob(os.path.join('meshes', '*.stl')) +
             glob(os.path.join('meshes', '*.dae'))),
-        (os.path.join('share', package_name, 'config'),
-        glob(os.path.join('config', '*.yaml'))),
+        (os.path.join('share', package_name, 'config'), 
+         glob(os.path.join('config', '*.yaml')) + glob(os.path.join('config', '*.rviz'))),
         (os.path.join('lib', package_name), ['finalexam_ros/arm_incremental_teleop.py']),
     ],
     install_requires=['setuptools'],

@@ -35,12 +35,7 @@ Cấu trúc thư mục chuẩn nhất:
 ```
 
 ### Bước 1 — Build package
-#### QUAN TRỌNG:
-```bash
-Bạn mở file: src/finalexam_ros/urdf/final.urdf
-Kéo xuống dòng: 402, sửa theo đúng đường dẫn trỏ đến .../src/finalexam_ros/config/controllers.yaml
-Sau đó mới thực hiện bước tiếp theo
-```
+
 
 ```bash
 cd ~/ro2_ws
